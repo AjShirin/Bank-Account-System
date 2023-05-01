@@ -15,7 +15,6 @@ public class Account extends BaseEntity {
      String accountNumber;
 
      Double balance;
-
      @ManyToOne
     @JoinColumn(name="Customer_ID",referencedColumnName = "id")
     Customer customer;
