@@ -1,26 +1,36 @@
 package com.BankSystem.SecondProject_BankSystem.Services;
 
+import com.BankSystem.SecondProject_BankSystem.Models.CreditCard;
+import com.BankSystem.SecondProject_BankSystem.Models.Customer;
 import com.BankSystem.SecondProject_BankSystem.Models.Loan;
+import com.BankSystem.SecondProject_BankSystem.Repositories.CustomerRepository;
 import com.BankSystem.SecondProject_BankSystem.Repositories.LoanRepository;
+import com.BankSystem.SecondProject_BankSystem.RequestObject.LoanRequest;
+import com.BankSystem.SecondProject_BankSystem.RequestObject.creditCardRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.Date;
 
 @Service
 public class LoanService {
 
     @Autowired
-    LoanRepository loanRepository;
+    private LoanRepository loanRepository;
 
-    // function to create a new loan application of a customer
-    public void createLoan(Double amount, Double intredtRate) {
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    public void createLoan(LoanRequest loanRequest) {
         Loan loan = new Loan(); // create object
-        loan.setAmount(amount);
-        loan.setInterestRate(intredtRate);
-        loan.setCreatedDate(new Date()); // give current date
+        loan.setAmount(loanRequest.getAmount());
+        loan.setInterestRate(loanRequest.getInterestRate());
         loan.setUpdatedDate(new Date()); // give current date
+        loan.setCreatedDate(new Date());// give current date
         loan.setIsActive(Boolean.TRUE);
+        Customer customer = customerRepository.findById(loanRequest.getCustomerID()).get();
+        loan.setCustomer(customer);
         loanRepository.save(loan);
     }
 }
