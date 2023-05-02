@@ -14,9 +14,9 @@ public class AccountController {
     AccountService accountService;
 
     @RequestMapping(value = "/createAccount", method = RequestMethod.POST)
-    public String createAccount(@RequestParam Integer accountNumber, Double balance,Integer customerID) {
+    public String createAccount(@RequestParam Integer accountNumber, Double balance, Integer customerID) {
         try {
-            accountService.createAccount(accountNumber,balance,customerID);
+            accountService.createAccount(accountNumber, balance, customerID);
         } catch (Exception e) {
             return "Failed try again";
         }

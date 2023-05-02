@@ -1,7 +1,39 @@
 package com.BankSystem.SecondProject_BankSystem.Services;
 
+import com.BankSystem.SecondProject_BankSystem.Models.CreditCard;
+import com.BankSystem.SecondProject_BankSystem.Models.Transaction;
+import com.BankSystem.SecondProject_BankSystem.Repositories.CreditCardRepository;
+import com.BankSystem.SecondProject_BankSystem.Repositories.TransactionRepository;
+import com.BankSystem.SecondProject_BankSystem.RequestObject.TransactionRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 @Service
 public class TransactionService {
+
+    @Autowired
+    private TransactionRepository transactionRepository;
+
+    @Autowired
+    private CreditCardRepository creditCardRepository;
+
+    public void createTransaction(TransactionRequest transactionRequest) throws ParseException {
+        Transaction transaction = new Transaction(); // create object
+        transaction.setAmount(transactionRequest.getAmount());
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd"); // to change the format of the date
+        Date convertedDateFromStringToDateFormat = dateFormatter.parse(transactionRequest.getTransactionDate());
+        transaction.setTransactionDate(convertedDateFromStringToDateFormat);
+        transaction.setUpdatedDate(new Date()); // give current date
+        transaction.setCreatedDate(new Date());// give current date
+        transaction.setIsActive(Boolean.TRUE);
+        CreditCard creditCard = creditCardRepository.findById(transactionRequest.getCreditCardId()).get();
+        transaction.setCreditCard(creditCard);
+        transactionRepository.save(transaction);
+    }
 }

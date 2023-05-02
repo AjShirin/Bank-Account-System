@@ -15,8 +15,8 @@ public class Loan extends BaseEntity{
 
    Double interestRate;
 
-//    @ManyToOne
-//    @JoinColumn(name="Account_ID",referencedColumnName = "id")
-//    Account account;
+    @OneToOne
+    @JoinColumn(name = "Customer_ID", referencedColumnName = "id")
+    Customer customer;
 
 }

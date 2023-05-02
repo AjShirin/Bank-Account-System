@@ -15,9 +15,9 @@ public class CustomerController {
     CustomerService customerService;
 
     @RequestMapping(value = "/createCustomer", method = RequestMethod.POST)
-    public String createCustomer(@RequestParam String name, String email, String phone)  {
+    public String createCustomer(@RequestParam String name, String email, String phone) {
         try {
-            customerService.createCustomer(name,email,phone);
+            customerService.createCustomer(name, email, phone);
         } catch (Exception e) {
             return "Failed try again";
         }
