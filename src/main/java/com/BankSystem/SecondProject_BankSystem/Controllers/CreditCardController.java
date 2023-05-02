@@ -21,6 +21,6 @@ public class CreditCardController {
         } catch (Exception e) {
             return "Failed try again";
         }
-        return "Account Created Successfully :)";
+        return "Credit Card Created Successfully :)";
     }
 }

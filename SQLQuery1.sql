@@ -8,6 +8,6 @@ select * From credit_card;
 select * From customer;
 select * From loan;
 
-DELETE FROM credit_card;
+DELETE FROM account_transaction;
 
 select 
