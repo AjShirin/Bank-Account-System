@@ -2,6 +2,7 @@ package com.BankSystem.SecondProject_BankSystem.Services;
 
         import com.BankSystem.SecondProject_BankSystem.Models.CreditCard;
         import com.BankSystem.SecondProject_BankSystem.Models.Customer;
+        import com.BankSystem.SecondProject_BankSystem.Models.Loan;
         import com.BankSystem.SecondProject_BankSystem.Models.Transaction;
         import com.BankSystem.SecondProject_BankSystem.Repositories.CreditCardRepository;
         import com.BankSystem.SecondProject_BankSystem.Repositories.CustomerRepository;
@@ -13,6 +14,7 @@ package com.BankSystem.SecondProject_BankSystem.Services;
         import java.text.ParseException;
         import java.text.SimpleDateFormat;
         import java.util.Date;
+        import java.util.List;
 
 @Service
 public class CreditCardService {
@@ -33,5 +35,10 @@ public class CreditCardService {
         Customer customer = customerRepository.findById(creditCardRequest.getCustomerID()).get();
         creditCard.setCustomer(customer);
         creditCardRepository.save(creditCard);
+    }
+
+    //function that gets all CreditCard (getAllCreditCard)
+    public List<CreditCard> getAllCreditCard() {
+        return creditCardRepository.getAllCreditCard();
     }
 }
