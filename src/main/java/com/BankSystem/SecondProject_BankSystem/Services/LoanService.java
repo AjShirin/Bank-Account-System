@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class LoanService {
@@ -22,6 +23,7 @@ public class LoanService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    // function that creates a new loan record (createLoan)
     public void createLoan(LoanRequest loanRequest) {
         Loan loan = new Loan(); // create object
         loan.setAmount(loanRequest.getAmount());
@@ -32,5 +34,10 @@ public class LoanService {
         Customer customer = customerRepository.findById(loanRequest.getCustomerID()).get();
         loan.setCustomer(customer);
         loanRepository.save(loan);
+    }
+
+    //function that gets all Loan (getAllLoan)
+    public List<Loan> getAllLoan() {
+        return loanRepository.getAllLoan();
     }
 }
