@@ -11,9 +11,12 @@ public class Loan extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-
     Double amount;
 
    Double interestRate;
+
+//    @ManyToOne
+//    @JoinColumn(name="Account_ID",referencedColumnName = "id")
+//    Account account;
 
 }

@@ -17,4 +17,16 @@ public class AccountService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    // function to create new Account
+    public void createAccount(Integer accountNumber, Double balance,Integer customerID) {
+        Account account= new Account(); // create object
+        account.setAccountNumber(accountNumber);
+        account.setBalance(balance);
+        account.setCreatedDate(new Date()); // give current date
+        account.setUpdatedDate(new Date()); // give current date
+        account.setIsActive(Boolean.TRUE);
+        Customer customer=customerRepository.findById(customerID).get();
+        account.setCustomer(customer);
+        accountRepository.save(account);
+    }
 }

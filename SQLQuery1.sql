@@ -2,5 +2,10 @@ CREATE DATABASE API_BankSystem;
 
 use API_BankSystem;
 
-select * From Customer;
-select * From Account;
+select * From account;
+select * From account_transaction;
+select * From credit_card;
+select * From customer;
+select * From loan;
+
+DELETE FROM customer;
