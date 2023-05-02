@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -17,7 +18,7 @@ public class AccountService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    // function to create new Account
+    // function to create new Account (createAccount)
     public void createAccount(Integer accountNumber, Double balance, Integer customerID) {
         Account account = new Account(); // create object
         account.setAccountNumber(accountNumber);
@@ -28,5 +29,9 @@ public class AccountService {
         Customer customer = customerRepository.findById(customerID).get();
         account.setCustomer(customer);
         accountRepository.save(account);
+    }
+    //function that gets all the Account (getAllAccount)
+    public List<Account> getAllAccount() {
+        return accountRepository.getAllAccount();
     }
 }

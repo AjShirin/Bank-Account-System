@@ -1,11 +1,14 @@
 package com.BankSystem.SecondProject_BankSystem.Controllers;
 
+import com.BankSystem.SecondProject_BankSystem.Models.Account;
 import com.BankSystem.SecondProject_BankSystem.Services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "account")
@@ -21,6 +24,13 @@ public class AccountController {
             return "Failed try again";
         }
         return "Account Created Successfully :)";
+    }
+
+    //function that gets all the account (getAllAccount)
+    @RequestMapping(value = "/getAllAccount", method = RequestMethod.GET)
+    public List<Account> getAllAccount() {
+        List<Account> accounts = accountService.getAllAccount();
+        return accounts;
     }
 
 
