@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class CustomerService {
@@ -13,7 +14,7 @@ public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
 
-    // function to create customer
+    // function to create customer (createCustomer)
     public void createCustomer(String name, String email, String phone) {
         Customer customer = new Customer(); // create object
         customer.setName(name);
@@ -23,6 +24,11 @@ public class CustomerService {
         customer.setUpdatedDate(new Date()); // give current date
         customer.setIsActive(Boolean.TRUE);
         customerRepository.save(customer);
+    }
+
+    //function that gets all the Customers (getAllCustomer)
+    public List<Customer> getAllCustomer() {
+        return customerRepository.getAllCustomer();
     }
 
 }
