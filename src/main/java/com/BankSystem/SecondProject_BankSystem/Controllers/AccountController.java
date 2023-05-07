@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+;
 import java.util.List;
 
 @RestController
@@ -49,4 +49,15 @@ public class AccountController {
                     .body("An error occurred, Account is not updated. Please try again.");
         }
     }
+    // function that changes that is active to false (deleteAccountById)
+    @RequestMapping(value = "/deleteAccountById", method = RequestMethod.POST)
+    public String deleteAccountById(AccountRequest accountRequest)  {
+        try {
+            accountService.deleteAccountById(accountRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Deleted Successfully :)";
+    }
+
 }

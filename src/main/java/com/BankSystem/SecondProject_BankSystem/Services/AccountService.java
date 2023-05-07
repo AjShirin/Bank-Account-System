@@ -8,8 +8,7 @@ import com.BankSystem.SecondProject_BankSystem.RequestObject.AccountRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +32,7 @@ public class AccountService {
         account.setCustomer(customer);
         accountRepository.save(account);
     }
+
     //function that gets all the Account (getAllAccount)
     public List<Account> getAllAccount() {
         return accountRepository.getAllAccount();
@@ -51,4 +51,13 @@ public class AccountService {
             return "An error occurred, record is not updated. Please try again.";
         }
     }
+
+    // function that makes the is active to false (deleteAccountById)
+    public void deleteAccountById(AccountRequest accountRequest) {
+        Account account = accountRepository.getAccountById(accountRequest.getId());
+        account.setIsActive(Boolean.FALSE);
+        accountRepository.save(account);
+    }
+
+
 }
