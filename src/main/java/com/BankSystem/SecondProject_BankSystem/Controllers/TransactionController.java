@@ -49,5 +49,15 @@ public class TransactionController {
                     .body("An error occurred, Transaction is not updated. Please try again.");
         }
     }
+    // function that changes that is active to false (deleteTransactionById)
+    @RequestMapping(value = "/deleteTransactionById", method = RequestMethod.POST)
+    public String deleteTransactionById(TransactionRequest transactionRequest)  {
+        try {
+            transactionService.deleteTransactionById(transactionRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Deleted Successfully :)";
+    }
 
 }

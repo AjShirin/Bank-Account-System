@@ -1,11 +1,9 @@
 package com.BankSystem.SecondProject_BankSystem.Services;
 
-import com.BankSystem.SecondProject_BankSystem.Models.Account;
 import com.BankSystem.SecondProject_BankSystem.Models.CreditCard;
 import com.BankSystem.SecondProject_BankSystem.Models.Transaction;
 import com.BankSystem.SecondProject_BankSystem.Repositories.CreditCardRepository;
 import com.BankSystem.SecondProject_BankSystem.Repositories.TransactionRepository;
-import com.BankSystem.SecondProject_BankSystem.RequestObject.AccountRequest;
 import com.BankSystem.SecondProject_BankSystem.RequestObject.TransactionRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,6 +60,12 @@ public class TransactionService {
                 return "An error occurred, record is not updated. Please try again.";
             }
         }
+    // function that makes the is active to false (deleteTransactionById)
+    public void deleteTransactionById(TransactionRequest transactionRequest) {
+        Transaction transaction = transactionRepository.getTransactionById(transactionRequest.getId());
+        transaction.setIsActive(Boolean.FALSE);
+        transactionRepository.save(transaction);
+    }
 
 
 }
