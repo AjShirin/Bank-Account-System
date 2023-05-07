@@ -39,7 +39,7 @@ public class AccountService {
     }
 
     // Function that updates Account (whole row) [updateAccount]
-    public String updateAccount(AccountRequest accountRequest) throws ParseException {
+    public String updateAccount(AccountRequest accountRequest) {
         try {
             Account account = accountRepository.getAccountById(accountRequest.getId());
             account.setBalance(accountRequest.getBalance());

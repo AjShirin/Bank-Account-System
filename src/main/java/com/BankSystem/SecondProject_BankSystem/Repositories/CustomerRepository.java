@@ -1,5 +1,6 @@
 package com.BankSystem.SecondProject_BankSystem.Repositories;
 
+import com.BankSystem.SecondProject_BankSystem.Models.Account;
 import com.BankSystem.SecondProject_BankSystem.Models.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,5 +16,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
     @Query("SELECT c from Customer c")
     List<Customer> getAllCustomer();
+
+
 
 }
