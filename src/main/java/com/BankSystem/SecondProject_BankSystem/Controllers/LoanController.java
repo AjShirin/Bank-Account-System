@@ -36,14 +36,18 @@ public class LoanController {
         List<Loan> Loans = loanService.getAllLoan();
         return Loans;
     }
+
     // This function Updates a record for Loan with user Input (updateLoan)
-    @RequestMapping(value = "/updateLoan", method = RequestMethod.POST)
-    public String updateLoan(LoanRequest loanRequest) {
+    @RequestMapping(value = "/updateLoan", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateLoan(LoanRequest loanRequest) {
+        // ResponseEntity<String> represents an HTTP,
+        // response with a body of type String, that returns response from a controller,and allows us to customize the HTTP response status.
         try {
-            loanService.createLoan(loanRequest);
+            String responseMsg = loanService.updateLoan(loanRequest);
+            return ResponseEntity.ok().body(responseMsg);
         } catch (Exception e) {
-            return "Failed try again";
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred, Account is not updated. Please try again.");
         }
-        return "Loan updated Successfully :)";
     }
 }

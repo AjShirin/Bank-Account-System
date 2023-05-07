@@ -39,24 +39,17 @@ public class LoanService {
         return loanRepository.getAllLoan();
     }
     // Function that updates Loan (whole row) [updateLoan]
-public void updateLoan(LoanRequest loanRequest) {
-    Loan loan=loanRepository.getLoanById(loanRequest.getId());
-    loan.setAmount(loanRequest.getAmount());
-    loan.setInterestRate(loanRequest.getInterestRate());
-    loan.setIsActive(Boolean.TRUE);
-    loanRepository.save(loan);
-}
-//    public String updateLoan(LoanRequest loanRequest) {
-//        try {
-//            Loan loan = loanRepository.getLoanById(loanRequest.getId());
-//            loan.setAmount(loanRequest.getAmount());
-//            loan.setInterestRate(loanRequest.getInterestRate());
-//            loan.setUpdatedDate(new Date());
-//            loan.setIsActive(Boolean.TRUE);
-//            loanRepository.save(loan);
-//            return "The Account ID:" + loanRequest.getId() + " has been successfully updated :)";
-//        } catch (Exception e) {
-//            return "An error occurred, record is not updated. Please try again.";
-//        }
-//    }
+    public String updateLoan(LoanRequest loanRequest) {
+        try {
+            Loan loan = loanRepository.getLoanById(loanRequest.getId());
+            loan.setAmount(loanRequest.getAmount());
+            loan.setInterestRate(loanRequest.getInterestRate());
+            loan.setUpdatedDate(new Date());
+            loan.setIsActive(Boolean.TRUE);
+            loanRepository.save(loan);
+            return "The Account ID:" + loanRequest.getId() + " has been successfully updated :)";
+        } catch (Exception e) {
+            return "An error occurred, record is not updated. Please try again.";
+        }
+    }
 }
