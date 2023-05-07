@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.text.DateFormatSymbols;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -58,6 +61,25 @@ public class AccountService {
         account.setIsActive(Boolean.FALSE);
         accountRepository.save(account);
     }
+    // Question 5 Generate a monthly statement for the account.
+    public String generateMonthlyStatement(Integer accountId) {
+        Account account = accountRepository.getAccountById(accountId);
+        Customer customer = account.getCustomer(); // Calendar to get the current month and year. // Gets the Customer object associated with the Account object.
+        Calendar cal = Calendar.getInstance();//  creates a new Calendar object and sets it to the current date and time.
+        //The getInstance() method returns a Calendar object that is initialized with the current date and time.
+        int month = cal.get(Calendar.MONTH);
+        int year = cal.get(Calendar.YEAR);
+
+        String statementForAccount = "Monthly Statement for Account: " + account.getAccountNumber() + "\n" +
+                "Customer Name: " + customer.getName() + "\n" +
+                "Month: " + new DateFormatSymbols().getMonths()[month] + " " + year + "\n" +
+                "Customer Email: " + customer.getEmail() + "\n" +
+                "Customer Phone: " + customer.getPhone() + "\n" +
+                "Account Balance: " + account.getBalance() + "\n";
+
+        return statementForAccount;
+    }
+
 
 
 }

@@ -59,5 +59,10 @@ public class AccountController {
         }
         return "Deleted Successfully :)";
     }
+    @RequestMapping(value = "/accountStatement", method = RequestMethod.GET)
+    public ResponseEntity<String> generateMonthlyStatementForAccount(@RequestParam Integer accountId) {
+        String statement = accountService.generateMonthlyStatement(accountId);
+        return ResponseEntity.ok(statement);
+    }
 
 }
