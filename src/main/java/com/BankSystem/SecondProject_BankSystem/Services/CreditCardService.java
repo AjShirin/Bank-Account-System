@@ -56,4 +56,10 @@ public class CreditCardService {
             return "An error occurred, record is not updated. Please try again.";
         }
     }
+    // function that makes the is active to false (deleteCreditCardById)
+    public void deleteCreditCardById(creditCardRequest creditCardRequest) {
+        CreditCard creditCard = creditCardRepository.getCreditCardById1(creditCardRequest.getId());
+        creditCard.setIsActive(Boolean.FALSE);
+        creditCardRepository.save(creditCard);
+    }
 }

@@ -49,4 +49,14 @@ public class CreditCardController {
                     .body("An error occurred, Account is not updated. Please try again.");
         }
     }
+    // function that changes that is active to false (deleteCreditCardById)
+    @RequestMapping(value = "/deleteCreditCardById", method = RequestMethod.POST)
+    public String deleteCreditCardById(creditCardRequest creditCardRequest)  {
+        try {
+            creditCardService.deleteCreditCardById(creditCardRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Deleted Successfully :)";
+    }
 }
