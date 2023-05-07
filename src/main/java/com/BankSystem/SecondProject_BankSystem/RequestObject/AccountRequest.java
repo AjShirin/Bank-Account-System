@@ -11,13 +11,12 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Data
-public class LoanRequest {
+public class AccountRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    Double amount;
-    Double interestRate;
-    Integer customerID;
+    Integer accountNumber;
+    Double balance;
 
-
+    Integer customerId;
 }

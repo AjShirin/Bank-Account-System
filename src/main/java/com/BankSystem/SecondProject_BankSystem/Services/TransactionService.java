@@ -24,6 +24,7 @@ public class TransactionService {
     @Autowired
     private CreditCardRepository creditCardRepository;
 
+    // function to create new transaction record (createTransaction)
     public void createTransaction(TransactionRequest transactionRequest) throws ParseException {
         Transaction transaction = new Transaction(); // create object
         transaction.setAmount(transactionRequest.getAmount());
@@ -42,4 +43,24 @@ public class TransactionService {
     public List<Transaction> getAllTransaction() {
         return transactionRepository.getAllTransaction();
     }
+
+    //update Transaction (whole row) [updateTransaction]
+//    public String updateTransaction(TransactionRequest transactionRequest) {
+//        try {
+//            Course course = courseRepository.getCourseById(id);
+//            course.setName(name);
+//            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//            Date createdDate = formatter.parse(userCreatedDate);
+//            Date updatedDate = formatter.parse(userUpdatedDate);
+//            course.setCreatedDate(createdDate);
+//            course.setUpdatedDate(updatedDate);
+//            course.setIsActive(isActive);
+//            courseRepository.save(course);
+//            return "The Course ID:" + id + " has been successfully updated :)";
+//        } catch (Exception e) {
+//            return "An error occurred, record is not updated. Please try again.";
+//        }
+//    }
+
+
 }

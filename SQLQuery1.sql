@@ -10,4 +10,4 @@ select * From loan;
 
 DELETE FROM account_transaction;
 
-select 
+
