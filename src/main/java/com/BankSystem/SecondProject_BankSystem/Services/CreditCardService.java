@@ -6,6 +6,7 @@ package com.BankSystem.SecondProject_BankSystem.Services;
         import com.BankSystem.SecondProject_BankSystem.Models.Transaction;
         import com.BankSystem.SecondProject_BankSystem.Repositories.CreditCardRepository;
         import com.BankSystem.SecondProject_BankSystem.Repositories.CustomerRepository;
+        import com.BankSystem.SecondProject_BankSystem.RequestObject.LoanRequest;
         import com.BankSystem.SecondProject_BankSystem.RequestObject.creditCardRequest;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Service;
@@ -40,5 +41,19 @@ public class CreditCardService {
     //function that gets all CreditCard (getAllCreditCard)
     public List<CreditCard> getAllCreditCard() {
         return creditCardRepository.getAllCreditCard();
+    }
+
+    // Function that updates Credit Card (whole row) [updateCreditCard]
+    public String updateCreditCard(creditCardRequest creditCardRequest) {
+        try {
+            CreditCard creditCard = creditCardRepository.getCreditCardById1(creditCardRequest.getId());
+            creditCard.setCreditLimit(creditCardRequest.getCreditLimit());
+            creditCard.setUpdatedDate(new Date());
+            creditCard.setIsActive(Boolean.TRUE);
+            creditCardRepository.save(creditCard);
+            return "The Account ID:" + creditCardRequest.getId() + " has been successfully updated :)";
+        } catch (Exception e) {
+            return "An error occurred, record is not updated. Please try again.";
+        }
     }
 }

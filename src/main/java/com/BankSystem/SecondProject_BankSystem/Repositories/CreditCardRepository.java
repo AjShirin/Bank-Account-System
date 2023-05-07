@@ -16,4 +16,7 @@ public interface CreditCardRepository extends JpaRepository<CreditCard, Integer>
 
     @Query("SELECT c from CreditCard c")
     List<CreditCard> getAllCreditCard();
+
+    @Query("SELECT c from CreditCard c where c.id= :creditCard_Id")
+    CreditCard getCreditCardById1(@Param("creditCard_Id") Integer id);
 }
