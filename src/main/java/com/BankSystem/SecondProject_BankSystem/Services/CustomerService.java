@@ -47,5 +47,11 @@ public class CustomerService {
             return "An error occurred, record is not updated. Please try again.";
         }
     }
+    // function that makes the is active to false (deleteCustomerById)
+    public void deleteCustomerById(CustomerRequest customerRequest) {
+        Customer customer = customerRepository.getCustomerById(customerRequest.getId());
+        customer.setIsActive(Boolean.FALSE);
+        customerRepository.save(customer);
+    }
 
 }

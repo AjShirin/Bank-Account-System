@@ -51,4 +51,14 @@ public class CustomerController {
                     .body("An error occurred, Customer is not updated. Please try again.");
         }
     }
+    // function that changes that is active to false (deleteCustomerById)
+    @RequestMapping(value = "/deleteCustomerById", method = RequestMethod.POST)
+    public String deleteCustomerById(CustomerRequest customerRequest)  {
+        try {
+            customerService.deleteCustomerById(customerRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Deleted Successfully :)";
+    }
 }
