@@ -50,4 +50,14 @@ public class LoanController {
                     .body("An error occurred, Account is not updated. Please try again.");
         }
     }
+    // function that changes that is active to false (deleteLoanById)
+    @RequestMapping(value = "/deleteLoanById", method = RequestMethod.POST)
+    public String deleteLoanById(LoanRequest loanRequest)  {
+        try {
+            loanService.deleteLoanById(loanRequest);
+        } catch (Exception e) {
+            return "Failed try again";
+        }
+        return "Deleted Successfully :)";
+    }
 }

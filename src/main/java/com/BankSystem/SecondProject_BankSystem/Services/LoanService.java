@@ -52,4 +52,10 @@ public class LoanService {
             return "An error occurred, record is not updated. Please try again.";
         }
     }
+    // function that makes the is active to false (deleteLoanById)
+    public void deleteLoanById(LoanRequest loanRequest) {
+        Loan loan = loanRepository.getLoanById(loanRequest.getId());
+        loan.setIsActive(Boolean.FALSE);
+        loanRepository.save(loan);
+    }
 }
