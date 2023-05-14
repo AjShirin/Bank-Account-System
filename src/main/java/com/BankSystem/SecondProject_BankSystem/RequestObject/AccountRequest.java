@@ -19,4 +19,10 @@ public class AccountRequest {
     Double balance;
 
     Integer customerId;
+
+//    Double amount;
+//
+//    String TransactionDate;
+
+
 }

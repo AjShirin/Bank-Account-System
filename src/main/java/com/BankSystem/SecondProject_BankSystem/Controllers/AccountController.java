@@ -6,10 +6,7 @@ import com.BankSystem.SecondProject_BankSystem.Services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 ;
 import java.util.List;
 
@@ -59,6 +56,24 @@ public class AccountController {
         }
         return "Deleted Successfully :)";
     }
+    // Question 2. Function that Retrieves the account balance for a specific account.
+    @RequestMapping(value = "getBalanceForSpecificAccount", method = RequestMethod.GET)
+    public double getBalanceForSpecificAccount(@RequestParam Integer id) {
+        return accountService.getBalanceForSpecificAccount(id);
+    }
+
+
+
+
+
+
+//    @RequestMapping(value = "/getBalanceForSpecificAccount", method = RequestMethod.GET)
+//    public ResponseEntity<String> createTransaction(Integer accountId, @RequestBody AccountRequest accountRequest) {
+//        String statement = accountService.generateMonthlyStatement(accountId);
+//        return ResponseEntity.ok(statement);
+//    }
+
+
     @RequestMapping(value = "/accountStatement", method = RequestMethod.GET)
     public ResponseEntity<String> generateMonthlyStatementForAccount(@RequestParam Integer accountId) {
         String statement = accountService.generateMonthlyStatement(accountId);

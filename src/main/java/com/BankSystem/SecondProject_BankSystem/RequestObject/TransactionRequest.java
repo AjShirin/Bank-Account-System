@@ -21,4 +21,8 @@ public class TransactionRequest {
     Double amount;
     String TransactionDate;
     Integer creditCardId;
+
+//    Integer accountNumber;
+
+    //accountNumber
 }

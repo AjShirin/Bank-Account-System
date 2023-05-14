@@ -37,6 +37,9 @@ public class TransactionService {
         CreditCard creditCard = creditCardRepository.findById(transactionRequest.getCreditCardId()).get();
         transaction.setCreditCard(creditCard);
         transactionRepository.save(transaction);
+
+//        Acco
+//                balane-amount
     }
 
     //function that gets all the Transaction (getAllTransaction)

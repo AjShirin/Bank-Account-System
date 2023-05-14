@@ -18,6 +18,8 @@ public class Transaction extends BaseEntity {
 
     Date TransactionDate;
 
+//    Integer account;
+
     @ManyToOne // Many transaction to one credit card
     @JoinColumn(name = "creditCard_id", referencedColumnName = "id")
     CreditCard creditCard;
