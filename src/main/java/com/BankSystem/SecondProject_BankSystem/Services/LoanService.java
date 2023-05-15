@@ -8,6 +8,7 @@ import com.BankSystem.SecondProject_BankSystem.Repositories.LoanRepository;
 import com.BankSystem.SecondProject_BankSystem.RequestObject.LoanRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 import java.util.List;
@@ -57,5 +58,10 @@ public class LoanService {
         Loan loan = loanRepository.getLoanById(loanRequest.getId());
         loan.setIsActive(Boolean.FALSE);
         loanRepository.save(loan);
+    }
+    public String getCustomerLoans(Integer customerId) {
+        Boolean loan = loanRepository.getLoanActivationByCustomerId(customerId);
+        return "The Activation Loan for Customer ID:" + " " + customerId + " " + "is:" + " " + loan;
+
     }
 }

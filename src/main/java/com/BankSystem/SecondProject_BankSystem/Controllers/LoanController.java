@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -60,4 +61,17 @@ public class LoanController {
         }
         return "Deleted Successfully :)";
     }
+//    @RequestMapping(value = "/getCustomerLoansActivation", method = RequestMethod.GET)
+//    public List<Loan> getCustomerLoansActivation(Integer customerId) {
+//        List<Loan> Loans = loanService.getCustomerLoans(customerId);
+//        return Loans;
+//    }
+
+    @RequestMapping(value = "/getCustomerLoansActivation", method = RequestMethod.GET)
+    public String getCustomerLoanActivation(@RequestParam Integer customerId) {
+        String loanActivation = loanService.getCustomerLoans(customerId);
+        return "The Activation Loan for Customer ID " + customerId + " is " + loanActivation;
+    }
+
+
 }

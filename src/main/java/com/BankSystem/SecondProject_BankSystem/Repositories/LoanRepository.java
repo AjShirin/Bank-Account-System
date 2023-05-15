@@ -15,4 +15,8 @@ public interface LoanRepository extends JpaRepository<Loan, Integer> {
 
     @Query("SELECT l from Loan l where l.id= :loanId")
     Loan getLoanById(@Param("loanId") Integer id);
+
+
+    @Query ("SELECT l.isActive from Loan l where l.customer.id= :customerId")
+    Boolean getLoanActivationByCustomerId(@Param("customerId") Integer id);
 }
