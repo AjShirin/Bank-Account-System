@@ -22,7 +22,8 @@ public class TransactionRequest {
     String TransactionDate;
     Integer creditCardId;
 
-//    Integer accountNumber;
+    Integer accountNumber;
 
-    //accountNumber
+    String isActive;
+
 }

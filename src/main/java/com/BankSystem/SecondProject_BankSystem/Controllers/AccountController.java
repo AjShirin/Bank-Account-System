@@ -61,6 +61,12 @@ public class AccountController {
     public double getBalanceForSpecificAccount(@RequestParam Integer id) {
         return accountService.getBalanceForSpecificAccount(id);
     }
+    // Question 3.Create a function to Update the account balance when a transaction is made.
+//    @RequestMapping(value = "updateAccountWhenTransactionMade", method = RequestMethod.PUT)
+//    public ResponseEntity<String> updateAccountWhenTransactionMade(@RequestBody AccountRequest accountRequest) {
+//        accountService.updateAccountBalance(accountRequest);
+//        return ResponseEntity.ok("Account balance updated successfully");
+//    }
 
 
 

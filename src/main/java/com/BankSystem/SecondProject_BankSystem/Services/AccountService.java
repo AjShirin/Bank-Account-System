@@ -1,24 +1,16 @@
 package com.BankSystem.SecondProject_BankSystem.Services;
 
 import com.BankSystem.SecondProject_BankSystem.Models.Account;
-import com.BankSystem.SecondProject_BankSystem.Models.CreditCard;
 import com.BankSystem.SecondProject_BankSystem.Models.Customer;
-import com.BankSystem.SecondProject_BankSystem.Models.Transaction;
 import com.BankSystem.SecondProject_BankSystem.Repositories.AccountRepository;
 import com.BankSystem.SecondProject_BankSystem.Repositories.CreditCardRepository;
 import com.BankSystem.SecondProject_BankSystem.Repositories.CustomerRepository;
 import com.BankSystem.SecondProject_BankSystem.Repositories.TransactionRepository;
 import com.BankSystem.SecondProject_BankSystem.RequestObject.AccountRequest;
-import com.BankSystem.SecondProject_BankSystem.RequestObject.TransactionRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import java.text.DateFormat;
 import java.text.DateFormatSymbols;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -75,6 +67,16 @@ public class AccountService {
         account.setIsActive(Boolean.FALSE);
         accountRepository.save(account);
     }
+    // Question 3.Create a function to Update the account balance when a transaction is made.
+//    public void updateAccountBalance(Integer accountId, Double transactionAmount) {
+//        Account account = accountRepository.findById(accountId).orElseThrow(() -> new RuntimeException("Account not found"));
+//        Double currentBalance = account.getBalance();
+//        Double newBalance = currentBalance + transactionAmount;
+//        account.setBalance(newBalance);
+//        accountRepository.save(account);
+//    }
+
+
 //    public void createTransaction(AccountRequest accountRequest) {
 //        Account account = accountRepository.findById(accountRequest.getAccountId()).orElseThrow(() -> new RuntimeException("Account not found"));
 //        Double currentBalance = account.getBalance();
@@ -105,11 +107,6 @@ public class AccountService {
 //    }
 
 
-
-
-
-
-
     // Question 5 Generate a monthly statement for the account.
     public String generateMonthlyStatement(Integer accountId) {
         Account account = accountRepository.getAccountById(accountId);
@@ -132,5 +129,10 @@ public class AccountService {
     // Question 2. Function that Retrieves the account balance for a specific account.
     public double getBalanceForSpecificAccount(Integer id) {
         return accountRepository.getBalanceForSpecificAccount(id);
+    }
+
+
+    public List<Account> getCustomerAccountInformation(Integer customerId) {
+        return accountRepository.getCustomerAccountInformation(customerId);
     }
 }

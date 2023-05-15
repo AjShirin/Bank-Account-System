@@ -6,6 +6,7 @@ import com.BankSystem.SecondProject_BankSystem.Services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,6 +59,16 @@ public class TransactionController {
             return "Failed try again";
         }
         return "Deleted Successfully :)";
+    }
+
+    @RequestMapping(value = "balanceWhenTransactionMade", method = RequestMethod.POST)
+    public String balanceWhenTransactionMade(@RequestBody TransactionRequest transactionRequest) {
+        try {
+            transactionService.createTransaction(transactionRequest);
+            return "Transaction made Successfully";
+        } catch (Exception e) {
+            return "Transaction Failed";
+        }
     }
 
 }

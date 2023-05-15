@@ -18,6 +18,6 @@ public class BaseEntity {
         @CreatedDate
         Date createdDate;
         @UpdateTimestamp
-        Date UpdatedDate;
+        Date updatedDate;
         Boolean isActive;
 }

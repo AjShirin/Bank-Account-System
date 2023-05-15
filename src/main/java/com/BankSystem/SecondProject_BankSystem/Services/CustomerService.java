@@ -15,7 +15,7 @@ public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
 
-    // function to create customer (createCustomer)
+    // Question 1. Create a new customer with their personal information. (createCustomer)
     public void createCustomer(String name, String email, String phone) {
         Customer customer = new Customer(); // create object
         customer.setName(name);
@@ -32,7 +32,7 @@ public class CustomerService {
         return customerRepository.getAllCustomer();
     }
 
-    // Function that updates Customer (whole row) [updateCustomer]
+    // Question 2.Update the customer information, such as their email or phone number. (whole row) [updateCustomer]
     public String updateCustomer(CustomerRequest customerRequest) {
         try {
             Customer customer = customerRepository.getCustomerById(customerRequest.getId());
@@ -47,6 +47,7 @@ public class CustomerService {
             return "An error occurred, record is not updated. Please try again.";
         }
     }
+
     // function that makes the is active to false (deleteCustomerById)
     public void deleteCustomerById(CustomerRequest customerRequest) {
         Customer customer = customerRepository.getCustomerById(customerRequest.getId());

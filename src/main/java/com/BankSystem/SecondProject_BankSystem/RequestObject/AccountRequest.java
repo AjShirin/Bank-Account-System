@@ -17,11 +17,9 @@ public class AccountRequest {
     Integer id;
     Integer accountNumber;
     Double balance;
-
     Integer customerId;
+    Double transactionAmount;
 
-//    Double amount;
-//
 //    String TransactionDate;
 
 

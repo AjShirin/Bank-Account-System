@@ -16,11 +16,15 @@ public class Transaction extends BaseEntity {
 
     Double amount;
 
-    Date TransactionDate;
+    Date transactionDate;
 
 //    Integer account;
 
     @ManyToOne // Many transaction to one credit card
-    @JoinColumn(name = "creditCard_id", referencedColumnName = "id")
+    @JoinColumn(name = "CreditCard_id", referencedColumnName = "id")
     CreditCard creditCard;
+
+    @ManyToOne // Many transaction to one Account card
+    @JoinColumn(name = "Account_id", referencedColumnName = "id")
+    Account account;
 }

@@ -1,7 +1,9 @@
 package com.BankSystem.SecondProject_BankSystem.Controllers;
 
+import com.BankSystem.SecondProject_BankSystem.Models.Account;
 import com.BankSystem.SecondProject_BankSystem.Models.Customer;
 import com.BankSystem.SecondProject_BankSystem.RequestObject.CustomerRequest;
+import com.BankSystem.SecondProject_BankSystem.Services.AccountService;
 import com.BankSystem.SecondProject_BankSystem.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,9 @@ import java.util.List;
 public class CustomerController {
     @Autowired
     CustomerService customerService;
+
+    @Autowired
+    AccountService accountService;
 
     // the function creates a new customer
     @RequestMapping(value = "/createCustomer", method = RequestMethod.POST)
@@ -61,4 +66,20 @@ public class CustomerController {
         }
         return "Deleted Successfully :)";
     }
+    // Question 3. Retrieve the customer's account information, including all their accounts and their current balances.
+    @RequestMapping(value = "getCustomerAccountInformation", method = RequestMethod.GET)
+    public List<Account> getCustomerAccountInformation(Integer customerId) {
+        List<Account> accountList = accountService.getCustomerAccountInformation(customerId);
+        return accountList;
+
+
+
+
+
+
+    }
+
+
+
+
 }
